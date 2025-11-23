@@ -16,10 +16,13 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: "18"
 
       - name: Install Dependencies
         run: npm install
+
+      - name: Install Goldsky CLI
+        run: npm install -g @goldskycom/cli
 
       - name: Codegen
         run: npm run codegen
@@ -33,18 +36,15 @@ jobs:
         run: |
           # extract version from tag (e.g. v1.0.0 -> v1.0.0)
           VERSION=${GITHUB_REF#refs/tags/}
-          
+
           echo "Deploying version: $VERSION"
-          
+
           # Install Goldsky CLI (if not in devDependencies, but it is)
           # We use npx to run the local version
-          
-          # Authenticate
-          # Trying env var first, if that fails, we might need explicit login
-          # But standard practice is that the CLI picks up GOLDSKY_API_KEY.
-          # To be safe, we can try to log in if the CLI requires it.
-          npx goldsky login --api-key $GOLDSKY_API_KEY
-          
-          # Deploy directly using the CLI
-          npx goldsky subgraph deploy dd-deposits-subgraph/$VERSION --path .
 
+          # Authenticate
+          # The CLI is now installed globally
+          goldsky login --api-key $GOLDSKY_API_KEY
+
+          # Deploy directly using the CLI
+          goldsky subgraph deploy dd-deposits-subgraph/$VERSION --path .
