@@ -1,6 +1,6 @@
 specVersion: 0.0.4
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: Contract
@@ -23,7 +23,7 @@ dataSources:
         - Withdrawal
       abis:
         - name: Contract
-          file: ./abis/Contract.json
+          file: Contract/Contract.json
       eventHandlers:
         - event: Deposited(indexed address,indexed uint256,address,uint256,uint256,uint256,uint64)
           handler: handleDeposited
@@ -37,4 +37,4 @@ dataSources:
           handler: handleTreasuryUpdated
         - event: Withdrawn(indexed address,indexed uint256,address,uint256)
           handler: handleWithdrawn
-      file: ./src/mapping.ts
+      file: Contract/Contract.wasm

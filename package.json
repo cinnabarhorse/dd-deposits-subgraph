@@ -5,7 +5,6 @@
     "codegen": "graph codegen",
     "build": "graph build",
     "deploy": "graph deploy --node https://api.thegraph.com/deploy/ dd-deposits-subgraph",
-    "deploy-goldsky": "goldsky subgraph deploy dd-deposits-subgraph/1.0.0 --path .",
     "create-local": "graph create --node http://localhost:8020/ dd-deposits-subgraph",
     "remove-local": "graph remove --node http://localhost:8020/ dd-deposits-subgraph",
     "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 dd-deposits-subgraph"
