@@ -44,7 +44,7 @@ jobs:
 
           # Authenticate
           # The CLI is now installed globally
-          goldsky login --api-key $GOLDSKY_API_KEY
+          goldsky login --token $GOLDSKY_API_KEY
 
           # Deploy directly using the CLI
           goldsky subgraph deploy dd-deposits-subgraph/$VERSION --path .
